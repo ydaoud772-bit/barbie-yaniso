@@ -1,4 +1,3 @@
-import { buffer } from 'micro';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
@@ -23,11 +22,11 @@ export default async function handler(req, res) {
   let event;
 
   try {
-    const buf = await buffer(req);
     const sig = req.headers['stripe-signature'];
+    const body = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
 
     event = stripe.webhooks.constructEvent(
-      buf.toString(),
+      body,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET
     );
