@@ -7,6 +7,7 @@ const Locations = () => {
       name: 'Barbier Yaniso 2 Downtown Location',
       address: '1405 Blvd. De Maisonneuve Ouest Local B, Montréal, QC H3G 2E8',
       phone: '5144732483',
+      mapUrl: 'https://maps.app.goo.gl/PLXLJE86EKNRLqG2A',
       hours: {
         weekdays: '9:00 AM - 12:00 AM',
         saturday: '9:00 AM - 12:00 AM',
@@ -18,6 +19,7 @@ const Locations = () => {
       name: 'Barbier Yaniso Jean-Talon',
       address: '3440 Rue Jean-Talon E, Montréal, QC H2A 1W9',
       phone: '4386866697',
+      mapUrl: 'https://maps.app.goo.gl/dZk8Mdq53x24S9pb6',
       hours: {
         weekdays: '9:30 AM - 1:00 AM',
         saturday: '9:30 AM - 1:00 AM',
