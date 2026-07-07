@@ -96,7 +96,7 @@ const Locations = () => {
   {locations.map((loc, idx) => (
     <div key={idx} className="bg-gray-900 border border-yellow-600/20 rounded-xl overflow-hidden h-80">
       <iframe
-        src={loc.name.includes('Downtown') ? "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.4323287739506!2d-73.5786311!3d45.4993188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a92e10696ad%3A0x7d25e01a9386d649!2sDowntown!5e0!3m2!1sen!2sca!4v1689264627195!5m2!1sen!2sca" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.031536484394!2d-73.6111812!3d45.5497274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9198641a9425b%3A0x1d211287c805a2e5!2sJean-Talon!5e0!3m2!1sen!2sca!4v1689264703567!5m2!1sen!2sca"}
+        src={loc.name.includes('Downtown') ? "https://maps.app.goo.gl/xEoeSvbhwoCF7i2G6?g_st=ic" : "https://maps.app.goo.gl/jPqWkazRG73AagaX9?g_st=ic"}
         width="100%"
         height="100%"
         style={{ border: 0 }}
