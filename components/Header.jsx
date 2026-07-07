@@ -51,12 +51,12 @@ const Header = ({ onBookClick, mobileMenuOpen, setMobileMenuOpen }) => {
           </div>
 
           <div className="flex items-center space-x-4">
-           <a 
-  href="https://buy.stripe.com/test_9B6aEZ2QS9lxeTh3x0fjG01" 
-  target="_blank" 
-  rel="noopener noreferrer"
+           <button
+  onClick={onBookClick}
   className="hidden md:block px-8 py-3 bg-yellow-600 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all duration-300"
 >
+  BOOK APPOINTMENT
+</button>
   BOOK APPOINTMENT
 </a>
             <button
