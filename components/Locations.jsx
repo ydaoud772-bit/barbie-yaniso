@@ -94,21 +94,27 @@ const Locations = () => {
         </div>
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[0, 1].map((idx) => (
-            <div
-              key={idx}
-              className="bg-gray-900 border border-yellow-600/20 rounded-xl overflow-hidden h-80"
-            >
-              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-yellow-600/50 mx-auto mb-3" />
-                  <p className="text-gray-500">Map integration would go here</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+  {locations.map((loc, idx) => {
+    const embedUrl = loc.name.includes('Downtown') 
+      ? "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.4323287739506!2d-73.5786311!3d45.4993188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a437f6eb051%3A0xc4eb04c79592471!2s1405%20de%20Maisonneuve%20W%2C%20Montreal%2C%20QC%20H3G%202E8!5e0!3m2!1sen!2sca!4v1710000000000!5m2!1sen!2sca"
+      : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.031536484394!2d-73.6111812!3d45.5497274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9196fe65427d1%3A0x6b1fb4b2fa60be99!2s3440%20Jean-Talon%20St%20E%2C%20Montreal%2C%20QC%20H2A%201W9!5e0!3m2!1sen!2sca!4v1710000000001!5m2!1sen!2sca";
+
+    return (
+      <div key={idx} className="bg-gray-900 border border-yellow-600/20 rounded-xl overflow-hidden h-80">
+        <iframe
+          src={embedUrl}
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title={loc.name}
+        ></iframe>
       </div>
+    );
+  })}
+</div>
     </section>
   );
 };
