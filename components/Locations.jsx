@@ -4,24 +4,24 @@ import { MapPin, Phone, Clock } from 'lucide-react';
 const Locations = () => {
   const locations = [
     {
-      name: 'Downtown Location',
-      address: '123 Main Street, Downtown Core',
-      phone: '(555) 123-4567',
+      name: 'Barbier Yaniso 2 Downtown Location',
+      address: '1405 Blvd. De Maisonneuve Ouest Local B, Montréal, QC H3G 2E8',
+      phone: '5144732483',
       hours: {
-        weekdays: '9:00 AM - 7:00 PM',
-        saturday: '9:00 AM - 6:00 PM',
-        sunday: '10:00 AM - 4:00 PM',
+        weekdays: '9:00 AM - 12:00 AM',
+        saturday: '9:00 AM - 12:00 AM',
+        sunday: '9:00 AM - 12:00 AM',
       },
       description: 'Experience urban sophistication in our flagship downtown shop.',
     },
     {
-      name: 'Uptown Location',
-      address: '456 Oak Avenue, Uptown District',
-      phone: '(555) 123-4568',
+      name: 'Barbier Yaniso Jean-Talon',
+      address: '3440 Rue Jean-Talon E, Montréal, QC H2A 1W9',
+      phone: '4386866697',
       hours: {
-        weekdays: '9:00 AM - 7:00 PM',
-        saturday: '9:00 AM - 6:00 PM',
-        sunday: '11:00 AM - 5:00 PM',
+        weekdays: '9:30 AM - 1:00 AM',
+        saturday: '9:30 AM - 1:00 AM',
+        sunday: '9:30 AM - 1:00 AM',
       },
       description: 'Discover premium grooming in our relaxed uptown atmosphere.',
     },
