@@ -84,9 +84,11 @@ const Locations = () => {
                 </div>
               </div>
 
-              <button className="w-full px-6 py-3 bg-yellow-600 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all duration-300">
-                DIRECTIONS
-              </button>
+          <a href={location.mapUrl} target="_blank" rel="noopener noreferrer" className="w-full">
+            <button className="w-full px-6 py-3 bg-yellow-600 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all duration-200">
+              DIRECTIONS
+            </button>
+          </a>
             </div>
           ))}
         </div>
