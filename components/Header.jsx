@@ -57,8 +57,7 @@ const Header = ({ onBookClick, mobileMenuOpen, setMobileMenuOpen }) => {
 >
   BOOK APPOINTMENT
 </button>
-  BOOK APPOINTMENT
-</a>
+ 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2 hover:bg-yellow-600/20 rounded-lg transition-colors"
