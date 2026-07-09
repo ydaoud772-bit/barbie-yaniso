@@ -186,14 +186,13 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
         )}
       </div>
 
-     <div>
+    <div>
           <label className="block text-sm font-semibold text-white mb-3">
             Preferred Time
           </label>
           <div className="grid grid-cols-4 gap-2">
             {timeSlots.map((slot) => {
               const isBooked = bookedSlots.includes(slot);
-
               return (
                 <button
                   key={slot}
@@ -202,7 +201,7 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
                   onClick={() => setFormData({ ...formData, time: slot })}
                   className={`py-2 px-2 rounded-lg text-sm font-medium transition-all ${
                     isBooked
-                      ? 'bg-neutral-850 text-neutral-600 cursor-not-allowed line-through opacity-40'
+                      ? 'bg-neutral-800 text-neutral-600 cursor-not-allowed line-through opacity-40'
                       : formData.time === slot
                         ? 'bg-yellow-600 text-black font-bold'
                         : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
@@ -213,12 +212,6 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
               );
             })}
           </div>
-          {errors.time && (
-            <div className="flex items-center gap-2 mt-2 text-red-500 text-sm">
-              <AlertCircle className="h-4 w-4" />
-              <span>{errors.time}</span>
-            </div>
-          )}
         </div>
 
         <div>
@@ -250,12 +243,6 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
               </label>
             ))}
           </div>
-          {errors.service && (
-            <div className="flex items-center gap-2 mt-2 text-red-500 text-sm">
-              <AlertCircle className="h-4 w-4" />
-              <span>{errors.service}</span>
-            </div>
-          )}
         </div>
 
         <button
