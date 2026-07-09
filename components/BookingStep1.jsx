@@ -186,87 +186,87 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
         )}
       </div>
 
-      <div>
-  <label className="block text-sm font-semibold text-white mb-3">
-    Preferred Time
-  </label>
-  <div className="grid grid-cols-4 gap-2">
-    {timeSlots.map((slot) => {
-      const isBooked = bookedSlots.includes(slot);
+     <div>
+          <label className="block text-sm font-semibold text-white mb-3">
+            Preferred Time
+          </label>
+          <div className="grid grid-cols-4 gap-2">
+            {timeSlots.map((slot) => {
+              const isBooked = bookedSlots.includes(slot);
 
-      return (
-        <button
-          key={slot}
-          type="button"
-          disabled={isBooked}
-          onClick={() => setFormData({ ...formData, time: slot })}
-          className={`py-2 px-2 rounded-lg text-sm font-medium transition-all ${
-            isBooked
-              ? 'bg-neutral-850 text-neutral-600 cursor-not-allowed line-through opacity-40'
-              : formData.time === slot
-                ? 'bg-yellow-600 text-black font-bold'
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
-          }`}
-        >
-          {slot}
-        </button>
-      );
-    })}
-  </div>
-</div>
-        {errors.time && (
-          <div className="flex items-center gap-2 mt-2 text-red-500 text-sm">
-            <AlertCircle className="h-4 w-4" />
-            {errors.time}
+              return (
+                <button
+                  key={slot}
+                  type="button"
+                  disabled={isBooked}
+                  onClick={() => setFormData({ ...formData, time: slot })}
+                  className={`py-2 px-2 rounded-lg text-sm font-medium transition-all ${
+                    isBooked
+                      ? 'bg-neutral-850 text-neutral-600 cursor-not-allowed line-through opacity-40'
+                      : formData.time === slot
+                        ? 'bg-yellow-600 text-black font-bold'
+                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
+                  }`}
+                >
+                  {slot}
+                </button>
+              );
+            })}
           </div>
-        )}
-      </div>
-
-      <div>
-        <label className="block text-sm font-semibold text-white mb-3">
-          Select Service
-        </label>
-        <div className="space-y-2">
-          {services.map((service) => (
-            <label
-              key={service.id}
-              className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
-                formData.service === service.id
-                  ? 'border-yellow-600 bg-yellow-600/10'
-                  : 'border-gray-700 hover:border-yellow-600/50'
-              }`}
-            >
-              <input
-                type="radio"
-                name="service"
-                value={service.id}
-                checked={formData.service === service.id}
-                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                className="w-5 h-5 accent-yellow-600"
-              />
-              <div className="ml-3 flex-1">
-                <span className="text-white font-medium">{service.name}</span>
-                <span className="ml-2 text-yellow-600 font-bold">${service.price}</span>
-              </div>
-            </label>
-          ))}
+          {errors.time && (
+            <div className="flex items-center gap-2 mt-2 text-red-500 text-sm">
+              <AlertCircle className="h-4 w-4" />
+              <span>{errors.time}</span>
+            </div>
+          )}
         </div>
-        {errors.service && (
-          <div className="flex items-center gap-2 mt-2 text-red-500 text-sm">
-            <AlertCircle className="h-4 w-4" />
-            {errors.service}
-          </div>
-        )}
-      </div>
 
-      <button
-        type="submit"
-        className="w-full mt-8 px-6 py-4 bg-yellow-600 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all duration-300 flex items-center justify-center space-x-2 group"
-      >
-        <span>PROCEED TO PAYMENT</span>
-        <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-      </button>
-    </form>
+        <div>
+          <label className="block text-sm font-medium text-white mb-3">
+            Select Service
+          </label>
+          <div className="space-y-2">
+            {services.map((service) => (
+              <label
+                key={service.id}
+                className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
+                  formData.service === service.id
+                    ? 'border-yellow-600 bg-yellow-600/10'
+                    : 'border-gray-700 hover:border-yellow-600/50'
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="service"
+                  value={service.id}
+                  checked={formData.service === service.id}
+                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                  className="w-5 h-5 accent-yellow-600"
+                />
+                <div className="ml-3">
+                  <span className="block text-white font-medium">{service.name}</span>
+                  <span className="block text-gray-400 text-sm">{service.price}</span>
+                </div>
+              </label>
+            ))}
+          </div>
+          {errors.service && (
+            <div className="flex items-center gap-2 mt-2 text-red-500 text-sm">
+              <AlertCircle className="h-4 w-4" />
+              <span>{errors.service}</span>
+            </div>
+          )}
+        </div>
+
+        <button
+          type="submit"
+          className="w-full py-4 bg-yellow-600 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all flex items-center justify-center gap-2 mt-6"
+        >
+          <span>Continue to Personal Details</span>
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </form>
+    </div>
   );
 };
 
