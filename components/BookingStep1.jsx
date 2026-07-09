@@ -222,7 +222,7 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
             {services.map((service) => (
               <label
                 key={service.id}
-                className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
+               className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
                   formData.service === service.id
                     ? 'border-yellow-600 bg-yellow-600/10'
                     : 'border-gray-700 hover:border-yellow-600/50'
