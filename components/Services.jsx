@@ -98,13 +98,7 @@ const Services = () => {
                 ))}
               </ul>
 
-              <button className={`w-full py-2 px-4 rounded-lg font-semibold transition-all duration-300 ${
-                service.featured
-                  ? 'bg-yellow-600 text-black hover:bg-yellow-500'
-                  : 'bg-yellow-600/20 text-yellow-600 border border-yellow-600/50 hover:bg-yellow-600/30'
-              }`}>
-                BOOK SERVICE
-              </button>
+            
             </div>
           ))}
         </div>
