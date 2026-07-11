@@ -221,6 +221,7 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
           <div className="space-y-2">
            {services.map((service) => (
         <label
+          <label
           key={service.id}
           className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
             formData.service === service.id
