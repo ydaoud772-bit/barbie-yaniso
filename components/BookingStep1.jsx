@@ -219,14 +219,15 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
             Select Service
           </label>
           <div className="space-y-2">
-            {services.map((service) => (
-             className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
-                  formData.service === service.id ? 'border-yellow-600 bg-yellow-600/10' : 'border-gray-700 hover:border-yellow-600/50'
-                }`}
-                    ? 'border-yellow-600 bg-yellow-600/10'
-                    : 'border-gray-700 hover:border-yellow-600/50'
-                }`}
-              >
+           {services.map((service) => (
+        <label
+          key={service.id}
+          className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
+            formData.service === service.id
+              ? 'border-yellow-600 bg-yellow-600/10'
+              : 'border-gray-700 hover:border-yellow-600/50'
+          }`}
+        >
                 <input
                   type="radio"
                   name="service"
