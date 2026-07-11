@@ -4,54 +4,27 @@ import { ChevronRight, AlertCircle } from 'lucide-react';
 const BookingStep1 = ({ initialData, onSubmit, services }) => {
   const [formData, setFormData] = useState(initialData);
   const [errors, setErrors] = useState({});
-const [bookedSlots, setBookedSlots] = useState([]);
 
-React.useEffect(() => {
-  const checkBookings = async () => {
-    if (!formData.date) return;
+  const timeSlots = [
+    '09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
+    '12:00 PM', '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM', '03:00 PM',
+    '03:30 PM', '04:00 PM', '04:30 PM', '05:00 PM', '05:30 PM', '06:00 PM',
+    '06:30 PM'
+  ];
 
-    const { data, error } = await supabase
-      .from('bookings')
-      .select('time')
-      .eq('date', formData.date)
-      .eq('branch', formData.branch);
-
-    if (data && !error) {
-      setBookedSlots(data.map(b => b.time));
-    }
-  };
-
-  checkBookings();
-}, [formData.date, formData.branch]);
- const downtownSlots = [
-  '09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
-  '12:00 PM', '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM', '03:00 PM',
-  '03:30 PM', '04:00 PM', '04:30 PM', '05:00 PM', '05:30 PM', '06:00 PM',
-  '06:30 PM', '07:00 PM', '07:30 PM', '08:00 PM', '08:30 PM', '09:00 PM',
-  '09:30 PM', '10:00 PM', '10:30 PM', '11:00 PM', '11:30 PM'
-];
-
-const uptownSlots = [
-  '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM',
-  '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM', '03:00 PM', '03:30 PM',
-  '04:00 PM', '04:30 PM', '05:00 PM', '05:30 PM', '06:00 PM', '06:30 PM',
-  '07:00 PM', '07:30 PM', '08:00 PM', '08:30 PM', '09:00 PM', '09:30 PM',
-  '10:00 PM', '10:30 PM', '11:00 PM', '11:30 PM', '12:00 AM', '12:30 AM'
-];
-
-const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
   const branches = [
     { id: 'downtown', name: '📍 Downtown Location - 123 Main Street' },
     { id: 'uptown', name: '📍 Uptown Location - 456 Oak Avenue' },
   ];
 
+  // Generate available dates (next 30 days, excluding past dates)
   const getAvailableDates = () => {
     const dates = [];
     const today = new Date();
     for (let i = 0; i < 30; i++) {
       const date = new Date(today);
       date.setDate(date.getDate() + i);
-      if (date.getDay() !== 0) {
+      if (date.getDay() !== 0) { // Exclude Sundays for simplicity
         dates.push(date.toISOString().split('T')[0]);
       }
     }
@@ -82,6 +55,7 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Full Name */}
       <div>
         <label className="block text-sm font-semibold text-white mb-2">
           Full Name
@@ -103,6 +77,7 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
         )}
       </div>
 
+      {/* Phone Number */}
       <div>
         <label className="block text-sm font-semibold text-white mb-2">
           Phone Number
@@ -124,6 +99,7 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
         )}
       </div>
 
+      {/* Branch Selection */}
       <div>
         <label className="block text-sm font-semibold text-white mb-3">
           Select Location
@@ -152,6 +128,7 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
         </div>
       </div>
 
+      {/* Date Picker */}
       <div>
         <label className="block text-sm font-semibold text-white mb-2">
           Preferred Date
@@ -186,41 +163,63 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
         )}
       </div>
 
-    <div>
-          <label className="block text-sm font-semibold text-white mb-3">
-            Preferred Time
-          </label>
-          <div className="grid grid-cols-4 gap-2">
-            {timeSlots.map((slot) => {
-              const isBooked = bookedSlots.includes(slot);
-              return (
-                <button
-                  key={slot}
-                  type="button"
-                  disabled={isBooked}
-                  onClick={() => setFormData({ ...formData, time: slot })}
-                  className={`py-2 px-2 rounded-lg text-sm font-medium transition-all ${
-                    isBooked
-                      ? 'bg-neutral-800 text-neutral-600 cursor-not-allowed line-through opacity-40'
-                      : formData.time === slot
-                        ? 'bg-yellow-600 text-black font-bold'
-                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
-                  }`}
-                >
-                  {slot}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-white mb-3">
-            Select Service
-          </label>
-          <div className="space-y-2">
-           {services.map((service) => (
+      {/* Time Slot */}
+      <div>
+        <label className="block text-sm font-semibold text-white mb-3">
+          Preferred Time
         </label>
+        <div className="grid grid-cols-4 gap-2">
+          {timeSlots.map((slot) => (
+            <button
+              key={slot}
+              type="button"
+              onClick={() => setFormData({ ...formData, time: slot })}
+              className={`py-2 px-2 rounded-lg text-sm font-medium transition-all ${
+                formData.time === slot
+                  ? 'bg-yellow-600 text-black'
+                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
+              }`}
+            >
+              {slot}
+            </button>
+          ))}
+        </div>
+        {errors.time && (
+          <div className="flex items-center gap-2 mt-2 text-red-500 text-sm">
+            <AlertCircle className="h-4 w-4" />
+            {errors.time}
+          </div>
+        )}
+      </div>
+
+      {/* Service Selection */}
+      <div>
+        <label className="block text-sm font-semibold text-white mb-3">
+          Select Service
+        </label>
+        <div className="space-y-2">
+          {services.map((service) => (
+            <label
+              key={service.id}
+              className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
+                formData.service === service.id
+                  ? 'border-yellow-600 bg-yellow-600/10'
+                  : 'border-gray-700 hover:border-yellow-600/50'
+              }`}
+            >
+              <input
+                type="radio"
+                name="service"
+                value={service.id}
+                checked={formData.service === service.id}
+                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                className="w-5 h-5 accent-yellow-600"
+              />
+              <div className="ml-3 flex-1">
+                <span className="text-white font-medium">{service.name}</span>
+                <span className="ml-2 text-yellow-600 font-bold">${service.price}</span>
+              </div>
+            </label>
           ))}
         </div>
         {errors.service && (
@@ -230,32 +229,16 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
           </div>
         )}
       </div>
-                <input
-                  type="radio"
-                  name="service"
-                  value={service.id}
-                  checked={formData.service === service.id}
-                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="w-5 h-5 accent-yellow-600"
-                />
-                <div className="ml-3">
-                  <span className="block text-white font-medium">{service.name}</span>
-                  <span className="block text-gray-400 text-sm">{service.price}</span>
-                </div>
-              </label>
-            ))}
-          </div>
-        </div>
 
-        <button
-          type="submit"
-          className="w-full py-4 bg-yellow-600 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all flex items-center justify-center gap-2 mt-6"
-        >
-          <span>Continue to Personal Details</span>
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      </form>
-    </div>
+      {/* Submit Button */}
+      <button
+        type="submit"
+        className="w-full mt-8 px-6 py-4 bg-yellow-600 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all duration-300 flex items-center justify-center space-x-2 group"
+      >
+        <span>PROCEED TO PAYMENT</span>
+        <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+      </button>
+    </form>
   );
 };
 
