@@ -220,14 +220,16 @@ const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
           </label>
           <div className="space-y-2">
            {services.map((service) => (
-       <label
-          key={service.id}
-          className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
-            formData.service === service.id
-              ? 'border-yellow-600 bg-yellow-600/10'
-              : 'border-gray-700 hover:border-yellow-600/50'
-          }`}
-        >
+        </label>
+          ))}
+        </div>
+        {errors.service && (
+          <div className="flex items-center gap-2 mt-2 text-red-500 text-sm">
+            <AlertCircle className="h-4 w-4" />
+            {errors.service}
+          </div>
+        )}
+      </div>
                 <input
                   type="radio"
                   name="service"
