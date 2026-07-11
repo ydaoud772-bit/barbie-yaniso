@@ -23,7 +23,6 @@ const uptownSlots = [
 
 const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
 
-const timeSlots = formData.branch === 'downtown' ? downtownSlots : uptownSlots;
 
  const branches = [
   { id: 'downtown', name: '📍 Downtown Location - 123 Main Street' },
