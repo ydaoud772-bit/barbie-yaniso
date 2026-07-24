@@ -21,13 +21,9 @@ const Hero = ({ onBookClick }) => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <button
-                onClick={onBookClick}
-                className="group px-8 py-4 bg-yellow-600 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-yellow-600/50 flex items-center justify-center space-x-2"
-              >
-                <span>BOOK NOW</span>
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+              <span className="px-8 py-4 bg-yellow-600 text-black font-bold rounded-lg text-sm tracking-wider uppercase inline-block">
+  WALK-IN ONLY
+</span>
               <button className="px-8 py-4 bg-transparent border-2 border-yellow-600 text-yellow-600 font-bold rounded-lg hover:bg-yellow-600/10 transition-all duration-300">
                 LEARN MORE
               </button>
