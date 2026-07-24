@@ -109,9 +109,9 @@ const Reviews = () => {
           <p className="text-gray-400 mb-6 max-w-lg mx-auto">
             Join hundreds of satisfied clients who have discovered the Barbier Yaniso difference.
           </p>
-          <button className="px-8 py-3 bg-yellow-600 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all duration-300 transform hover:scale-105">
-            BOOK YOUR APPOINTMENT
-          </button>
+          <span className="inline-block px-8 py-3 bg-yellow-600 text-black font-bold rounded-lg text-sm tracking-wider uppercase">
+  WALK-IN ONLY
+</span>
         </div>
       </div>
     </section>
