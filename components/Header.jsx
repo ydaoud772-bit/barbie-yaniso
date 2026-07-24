@@ -51,12 +51,9 @@ const Header = ({ onBookClick, mobileMenuOpen, setMobileMenuOpen }) => {
           </div>
 
           <div className="flex items-center space-x-4">
-           <button
-  onClick={onBookClick}
-  className="hidden md:block px-8 py-3 bg-yellow-600 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all duration-300"
->
-  BOOK APPOINTMENT
-</button>
+           <span className="hidden md:inline-block px-6 py-2.5 bg-yellow-600 text-black font-bold rounded-lg text-sm tracking-wider uppercase">
+  WALK-IN ONLY
+</span>
  
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
