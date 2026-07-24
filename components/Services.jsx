@@ -104,12 +104,11 @@ const Services = () => {
         </div>
 
         <div className="mt-16 p-8 bg-gradient-to-r from-yellow-600/10 to-transparent border border-yellow-600/20 rounded-xl">
-          <h3 className="text-xl font-bold text-white mb-2">💳 Full Pricing Transparency</h3>
-          <p className="text-gray-400">
-            All prices are in Canadian dollars (CAD) and include HST. Online booking includes 5% discount on selected services. No hidden fees, no surprises.
-          </p>
-        </div>
-      </div>
+  <h3 className="text-xl font-bold text-white mb-2">💳 Full Pricing Transparency</h3>
+  <p className="text-gray-400">
+    All prices are in Canadian dollars (CAD) including GST/QST. Walk-ins strictly welcome. Cash only — no hidden fees, no surprises.
+  </p>
+</div>
     </section>
   );
 };
