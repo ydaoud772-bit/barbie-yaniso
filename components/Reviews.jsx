@@ -52,8 +52,7 @@ const realReviews = [
 ];
 
 const Reviews = () => {
-  const GOOGLE_MAPS_URL = "https://www.google.com/maps/place/Barbier+Yaniso+2/@45.4977354,-73.5805355,17z";
-
+ const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/Barbier+Yaniso+2+Montreal";
   return (
     <section id="reviews" className="py-16 bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
